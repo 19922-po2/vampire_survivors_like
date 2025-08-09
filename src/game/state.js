@@ -31,6 +31,8 @@ export function createInitialState() {
     pausedForLevel: false,
     pendingChoices: null,
     assets: null,
+    audio: null,
+    kills: { normal: 0, boss: 0 },
   };
 }
 

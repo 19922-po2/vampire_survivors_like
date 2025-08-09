@@ -4,7 +4,12 @@ export const WORLD = {
   enemyBaseSpeed: 55,
   enemyBaseHp: 12,
   enemyDamage: 5,
+  bossDamage: 16,
   xpPerEnemy: 3,
+  bossBaseHp: 320,
+  bossSpeed: 85,
+  bossXp: 50,
+  bossSpawnIntervalSec: 60,
   projectileSpeed: 420,
   projectileSize: 6,
   projectileLifetimeSec: 2.2,
@@ -20,6 +25,7 @@ export const ASSET_PATHS = {
   character: 'assets/character/Char_Schoolgirl_Walk.webp',
   monster1: 'assets/monster/Monster_Bad_Fury_Move.webp',
   monster2: 'assets/monster/Monster_Tottochi_Move.webp',
+  boss: 'assets/boss/Monster_Tutankhamen_Move.webp',
 };
 
 export function xpForLevel(level) {

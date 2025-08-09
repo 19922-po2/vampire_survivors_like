@@ -6,6 +6,8 @@ export function createSpawner(state) {
   return {
     timer: 0,
     rate: WORLD.baseEnemySpawnRatePerSecond, // spawns/sec
+    bossTimer: 0,
+    bossKillGate: 10,
     update(dt) {
       // Difficulty ramp
       state.time += dt;
@@ -16,17 +18,32 @@ export function createSpawner(state) {
         this.timer -= 1;
         spawnAroundPlayer(state);
       }
+
+      // Boss spawn timer
+      this.bossTimer += dt;
+      const killGateReached = state.kills.normal >= this.bossKillGate;
+      if (this.bossTimer >= WORLD.bossSpawnIntervalSec || killGateReached) {
+        this.bossTimer = 0;
+        if (killGateReached) this.bossKillGate += 10; // next gate
+        spawnAroundPlayer(state, true);
+      }
     },
   };
 }
 
-function spawnAroundPlayer(state) {
+function spawnAroundPlayer(state, boss = false) {
   const radius = 520;
   const angle = randRange(state.rng, 0, Math.PI * 2);
   const x = state.player.x + Math.cos(angle) * radius;
   const y = state.player.y + Math.sin(angle) * radius;
-  const type = Math.random() < 0.5 ? 1 : 2;
-  spawnEnemy(state, x, y, type);
+  if (boss) {
+    state.bossHp = WORLD.bossBaseHp;
+    state.bossSpeed = WORLD.bossSpeed;
+    spawnEnemy(state, x, y, 1, true);
+  } else {
+    const type = Math.random() < 0.5 ? 1 : 2;
+    spawnEnemy(state, x, y, type, false);
+  }
 }
 
 

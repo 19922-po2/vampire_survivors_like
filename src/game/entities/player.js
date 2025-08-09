@@ -8,7 +8,7 @@ export function updatePlayer(state, input, dt, canvas) {
   p.y += mv.y * p.speed * dt;
 
   p.attackCooldown -= dt;
-  if (p.canShoot && input.mouseDown && p.attackCooldown <= 0) {
+  if (p.canShoot && p.attackCooldown <= 0) {
     const rate = Math.max(0.1, p.fireRate);
     const delay = 1 / rate;
     p.attackCooldown = delay;
@@ -31,6 +31,7 @@ export function updatePlayer(state, input, dt, canvas) {
         damage: p.damage,
       });
     }
+    state.audio?.playShoot();
   }
 }
 
