@@ -1,0 +1,123 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: #0e0e0e;
+  color: #eee;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+#game {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  image-rendering: pixelated;
+}
+
+#ui-root {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.65);
+  pointer-events: auto;
+}
+
+.levelup-card {
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 16px;
+  width: min(720px, 92vw);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+}
+
+.levelup-title {
+  font-size: 20px;
+  margin: 0 0 12px;
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.choice {
+  background: #242424;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.choice:hover {
+  background: #2c2c2c;
+}
+
+.choice h4 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.choice p {
+  margin: 0;
+  font-size: 13px;
+  color: #cfcfcf;
+}
+
+.hud {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.bar {
+  width: 38vw;
+  max-width: 540px;
+  height: 12px;
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6aa7ff, #4a87ff);
+}
+
+.bar-fill.hp {
+  background: linear-gradient(90deg, #ff6a6a, #ff4a4a);
+}
+
+.hud-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.hud-chip {
+  background: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+
